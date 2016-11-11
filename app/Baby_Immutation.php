@@ -22,10 +22,8 @@ class Baby_Immutation extends Model
         'immutation_date'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }
