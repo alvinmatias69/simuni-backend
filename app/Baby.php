@@ -20,9 +20,8 @@ class Baby extends Model
         'birth_date', 'father_name', 'mother_name', 'weight', 'height'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

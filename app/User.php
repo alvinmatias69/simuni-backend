@@ -34,4 +34,14 @@ class User extends Authenticatable
     [
         'password'
     ];
+
+    public function baby()
+    {
+        return $this->hasOne('App\Baby');
+    }
+
+    public function baby_immunitation()
+    {
+        return $this->hasMany('App\Baby_Immunitation');
+    }
 }
