@@ -2,14 +2,11 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class Schedule extends Model
 {
-    use Notifiable;
-
-    /**
+     /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -22,7 +19,7 @@ class User extends Authenticatable
     */
     protected $fillable = // kolom2 yg diisi manual datanya, public, constractor
     [
-        'name', 'username', 'phone_number', 'type'
+        'schedule_date', 'location'
     ];
 
     /**
@@ -30,18 +27,5 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $hidden = //tidak bisa diakses secara sembarangan - atribut set private 
-    [
-        'password'
-    ];
-
-    public function baby()
-    {
-        return $this->hasOne('App\Baby');
-    }
-
-    public function baby_immunitation()
-    {
-        return $this->hasMany('App\Baby_Immunitation');
-    }
+  
 }
