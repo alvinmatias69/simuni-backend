@@ -2,13 +2,10 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class Baby_Immutation extends Model
 {
-    use Notifiable;
-
     /**
      * The attributes that are mass assignable.
      *
@@ -22,7 +19,7 @@ class User extends Authenticatable
     */
     protected $fillable = // kolom2 yg diisi manual datanya, public, constractor
     [
-        'name', 'username', 'phone_number', 'type'
+        'immutation_date'
     ];
 
     /**
@@ -30,8 +27,5 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $hidden = //tidak bisa diakses secara sembarangan - atribut set private 
-    [
-        'password'
-    ];
+
 }
