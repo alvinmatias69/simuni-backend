@@ -10,13 +10,20 @@ class ControllerGetAllJadwal extends Controller
     public function getJadwalbyDate(Request $request)
     {
     	$jadwal = Schedule::where('schedule_date',$request->input('date'))->get();
+    	if ($jadwal==null){
+    		return reponse()->json(['code'=>'FAILURE_GET', 'message' => 'no data found', 'content'=>[]]);
+    	}
     	return response()->json(['code'=> 'SUCCES_GET', 'message' => 'OK' , 'content' => $jadwal]);
     }
 
     public function getJadwalbyUser(Request $request)
     {
-    	$jadwaluser = Schedule::where('id',$request->input('jadwaluser'))->get();
-    	return response()->json(['code'=> 'SUCCES_GET', 'message' => 'OK', 'content' => $jadwaluser]);
+    	$jadwal = Schedule::where('id',$request->input('jadwaluser'))->get();
+    	if($jadwal==null){
+    		return response()->json(['code'=>'FAILURE_GET', 'message'=>'no data found', 'content'=>[]]);
+    	}
+    	return response()->json(['code'=> 'SUCCES_GET', 'message' => 'OK', 'content' => $jadwal]);
+    	
     }
 
 
