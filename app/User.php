@@ -2,10 +2,9 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class User extends Model
 {
     use Notifiable;
 
@@ -37,11 +36,12 @@ class User extends Authenticatable
 
     public function baby()
     {
-        return $this->hasOne('App\Baby');
+        return $this->hasOne('App\Baby', 'idUser');
+    }
+    public function baby_imunisation()
+    {
+        return $this->hasMany('App\Baby_Immunisation','idBaby');
+
     }
 
-    public function baby_immunitation()
-    {
-        return $this->hasMany('App\Baby_Immunitation');
-    }
 }

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Schedule extends Model
 {
-     /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -19,7 +19,7 @@ class Schedule extends Model
     */
     protected $fillable = // kolom2 yg diisi manual datanya, public, constractor
     [
-        'schedule_date', 'location'
+        'arr_idVaccine','schedule_date', 'location'
     ];
 
     /**

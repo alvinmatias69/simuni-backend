@@ -35,4 +35,6 @@ class CreateBabysTable extends Migration
     {
         Schema::dropIfExists('babys');
     }
+
+    
 }
