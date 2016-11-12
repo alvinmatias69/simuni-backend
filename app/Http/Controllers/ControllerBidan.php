@@ -11,4 +11,9 @@ class ControllerBidan extends Controller
     	return 
     }
 
+    public function login()
+    {
+    	
+    }
+
 }

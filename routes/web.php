@@ -15,6 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::group(['prefix'=>'api'], function(){
-	Route::get('/schedule','ControllerGetAllJadwal@getJadwal');
-	
+	Route::get('/schedule','ControllerGetAllJadwal@getJadwalbyDate');
+	Route::get('/schedule/{id}','ControllerGetAllJadwal@getJadwalbyUser');
 });
