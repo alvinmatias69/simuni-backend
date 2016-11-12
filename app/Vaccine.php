@@ -28,6 +28,7 @@ class Vaccine extends Model
 
     }
 
-    
+    /* bla bla bla bla bla */
+
 
 }
