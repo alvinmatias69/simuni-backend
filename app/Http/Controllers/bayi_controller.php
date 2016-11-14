@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Baby;
+use App\User;
 
 class bayi_controller extends Controller
 {
@@ -17,6 +18,7 @@ class bayi_controller extends Controller
 
     public function getAllBaby(){
         $baby = Baby::with('user')->get();
+        //$baby = Baby::find($id)->User;
         $baby = Baby::all();
         return response()->json(['code'=> 'SUCCESS_GET','message' => 'OK','content' => $baby]);
     }

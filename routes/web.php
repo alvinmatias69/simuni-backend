@@ -44,5 +44,6 @@ Route::group(['prefix'=>'api','middleware'=>'cors'], function(){
 	Route::delete('/coba/{id}', 'ResourceControllerExample@destroy');
 
 	//route controller bayi
+	Route::get('/bayi','bayi_controller@getAllBaby');
 	Route::get('/bayi/{id}','bayi_controller@showBaby');
 });
