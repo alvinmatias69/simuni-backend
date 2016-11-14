@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Baby_Immutation extends Model
+class Baby_Immunisation extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -19,11 +19,15 @@ class Baby_Immutation extends Model
     */
     protected $fillable = // kolom2 yg diisi manual datanya, public, constractor
     [
-        'immutation_date'
+        'idBaby','idVaccine','immutation_date'
     ];
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'idBaby');
+    }
+    public function vaccine()
+    {
+        return $this->belongsTo('App\Vaccine', 'idVaccine');
     }
 }
