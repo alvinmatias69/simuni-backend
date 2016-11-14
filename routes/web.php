@@ -17,4 +17,5 @@ Route::get('/', function () {
 Route::group(['prefix'=>'api'], function(){
 	Route::get('/schedule','ControllerGetAllJadwal@getJadwalbyDate');
 	Route::get('/schedule/{id}','ControllerGetAllJadwal@getJadwalbyUser');
+	Route::post('/schedule','ControllerGetAllJadwal@createNewJadwal');
 });

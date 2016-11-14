@@ -26,5 +26,15 @@ class ControllerGetAllJadwal extends Controller
     	
     }
 
+    public function createNewJadwal(Request $request)
+    {
+        $jadwal = new Schedule();
+        $jadwal->arr_idVaccine = $request->input('idvaccine'); 
+        $jadwal->schedule_date = $request->input('sceduledate');
+        $jadwal->location = $request->input('lokasi');
+        $jadwal->save();
+        return response()->json(['code' => 'SUCCESS_POST', 'message' => 'OK', 'content' => []]);}
+        
+
 
 }
