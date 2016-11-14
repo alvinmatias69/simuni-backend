@@ -13,4 +13,8 @@
 
 Route::get('/', function () {
     return view('welcome');
+
 });
+
+Route::get('/findAllBaby','bayi_controller@getAllBaby');
+Route::get('/findBaby/{id}','bayi_controller@getBaby');

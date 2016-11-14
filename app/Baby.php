@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Baby extends Model
 {
 	//ini harus dicopas dulu method dibawah2 dari user ?? gak keluar dia langsung
+    protected $table = 'babys';
 	protected $primaryKey = null;
 	public $incrementing = false;
      /*protected $table = 'babies'; ; kalo nama tabel beda dg model
