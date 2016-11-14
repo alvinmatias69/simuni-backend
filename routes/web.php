@@ -27,8 +27,10 @@ Route::group(['prefix'=>'api','middleware'=>'cors'], function(){
 	Route::post('/schedule','ControllerGetAllJadwal@createNewJadwal');
 
 	Route::get('/users','users_controller@getAllUser');
-	Route::delete('/users','users_controller@deleteUser');
+	Route::delete('/users/{id}','users_controller@deleteUser');
 	Route::post('/users','users_controller@registerUser');
+	Route::put('/users/{id}','users_controller@editUser');
+	Route::get('/users/{id}','users_controller@detailUser');
 	
 	Route::get('/findAllBaby','bayi_controller@getAllBaby');
 	Route::get('/findBaby/{id}','bayi_controller@getBaby');
