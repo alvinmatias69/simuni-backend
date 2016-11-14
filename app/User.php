@@ -3,11 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Model
 {
     //use Notifiable;
-
+    use SoftDeletes;
     /**
      * The attributes that are mass assignable.
      *
@@ -21,8 +22,10 @@ class User extends Model
     */
     protected $fillable = // kolom2 yg diisi manual datanya, public, constractor
     [
-        'name', 'username', 'phone_number', 'type'
+        'name', 'username', 'phone_number', 'type', 'password'
     ];
+
+    protected $dates = ['deleted_at'];
 
     /**
      * The attributes that should be hidden for arrays.

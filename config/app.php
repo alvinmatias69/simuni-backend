@@ -166,8 +166,11 @@ return [
         /*
          * Package Service Providers...
          */
+        // JWT Auth
+        'Tymon\JWTAuth\Providers\JWTAuthServiceProvider',
 
-        //
+        // CORS
+        Barryvdh\Cors\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -226,6 +229,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        // JWT Auth
+        'JWTAuth' => 'Tymon\JWTAuth\Facades\JWTAuth',
+        'JWTFactory' => 'Tymon\JWTAuth\Facades\JWTFactory',
     ],
 
 ];

@@ -18,7 +18,10 @@ Route::get('/', function () {
 
 
 
-Route::group(['prefix'=>'api'], function(){
+Route::group(['prefix'=>'api','middleware'=>'cors'], function(){
+	Route::group(['middleware' => 'jwt.auth'], function() {
+	    
+	});
 	Route::get('/schedule','ControllerGetAllJadwal@getJadwalbyDate');
 	Route::get('/schedule/{id}','ControllerGetAllJadwal@getJadwalbyUser');
 	Route::post('/schedule','ControllerGetAllJadwal@createNewJadwal');
@@ -29,4 +32,12 @@ Route::group(['prefix'=>'api'], function(){
 	
 	Route::get('/findAllBaby','bayi_controller@getAllBaby');
 	Route::get('/findBaby/{id}','bayi_controller@getBaby');
+
+
+	// contoh routes, delete ketika stagging
+	Route::get('/coba','ResourceControllerExample@index');
+	Route::post('/coba','ResourceControllerExample@store');
+	Route::get('/coba/{id}', 'ResourceControllerExample@show');
+	Route::put('/coba/{id}', 'ResourceControllerExample@update');
+	Route::delete('/coba/{id}', 'ResourceControllerExample@destroy');
 });
