@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Baby;
 
 class bayi_controller extends Controller
 {
@@ -19,6 +20,18 @@ class bayi_controller extends Controller
     }
     public void login($username, $password){
 
+    }
+    public function getAllBayi(){
+        $bayi = Baby::all();
+        return response()->json(['code'=> 'SUCCESS_GET','message' => 'OK','content' => $baby]);
+    }
+    public function getBayi($id){
+        $bayi = Baby::find($id);
+        return response()->json(['code' => 'SUCCESS_GET','message' => 'OK','content' =>$baby]);
+    }
+    public function InsertBayi(){
+        $baby = new Baby();
+        $baby-> 
     }
 
 }
