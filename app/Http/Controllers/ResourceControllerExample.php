@@ -18,11 +18,13 @@ class ResourceControllerExample extends Controller
     {
         // $users = User::simplePaginate(100);
         $users = User::all();
-        return response()->json(['code'=>'SUCCESS_GET', 'message'=>'Ok', 'content'=>$users]);
+        return response()->json(
+            ['code'=>'SUCCESS_GET', 'message'=>'Ok', 'content'=>$users]
+        );
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource in sto
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -34,7 +36,7 @@ class ResourceControllerExample extends Controller
         $user = new User();
         $user->name = $request->input('name');
         $user->username = $request->input('username');
-        $user->password = $request->input('password');
+        $user->password = bcrypt($request->input('password'));
         $user->phone_number = $request->input('phone_number');
         $user->type = $request->input('type');
         $user->save();
@@ -64,6 +66,7 @@ class ResourceControllerExample extends Controller
     {
         $user = User::find($id);
         $user->name = $request->input('name');
+        $user->username = $request->input('username');
         $user->save();
         return response()->json(['code'=>'SUCCESS_PUT', 'message'=>'Ok', 'content'=>null]);
     }
@@ -77,6 +80,7 @@ class ResourceControllerExample extends Controller
     public function destroy($id)
     {
         User::destroy($id);
+        
         return response()->json(['code'=>'SUCCESS_DELETE', 'message'=>'Ok', 'content'=>null]);
     }
 }
