@@ -40,4 +40,17 @@ Route::group(['prefix'=>'api','middleware'=>'cors'], function(){
 	Route::get('/coba/{id}', 'ResourceControllerExample@show');
 	Route::put('/coba/{id}', 'ResourceControllerExample@update');
 	Route::delete('/coba/{id}', 'ResourceControllerExample@destroy');
+
+
+
+
+
+	//Vaksin Route /Yogie
+
+	Route::get('/vaksin','ControllerVaccines@index');
+	Route::get('/vaksin/{id}','ControllerVaccines@show');
+	Route::put('/vaksin/{id}','ControllerVaccines@update');
+	Route::delete('/vaksin/{id}','ControllerVaccines@destroy');
+	Route::post('/vaksin','ControllerVaccines@store');
+
 });
