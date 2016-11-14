@@ -19,12 +19,11 @@ class ResourceControllerExample extends Controller
         // $users = User::simplePaginate(100);
         //index = untuk menampilkan  data semuanya
         $users = User::all();
-
         return response()->json(['code'=>'SUCCESS_GET', 'message'=>'Ok', 'content'=>$users]);
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource in sto
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -68,6 +67,7 @@ class ResourceControllerExample extends Controller
     {
         $user = User::find($id);
         $user->name = $request->input('name');
+        $user->username = $request->input('username');
         $user->save();
         return response()->json(['code'=>'SUCCESS_PUT', 'message'=>'Ok', 'content'=>null]);
     }
@@ -81,6 +81,7 @@ class ResourceControllerExample extends Controller
     public function destroy($id)
     {
         User::destroy($id);
+        
         return response()->json(['code'=>'SUCCESS_DELETE', 'message'=>'Ok', 'content'=>null]);
     }
 }
