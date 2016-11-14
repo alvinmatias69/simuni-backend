@@ -16,7 +16,9 @@ class ResourceControllerExample extends Controller
     public function index()
     {
         // $users = User::simplePaginate(100);
+        //index = untuk menampilkan  data semuanya
         $users = User::all();
+
         return response()->json(['code'=>'SUCCESS_GET', 'message'=>'Ok', 'content'=>$users]);
     }
 
@@ -28,12 +30,13 @@ class ResourceControllerExample extends Controller
      */
     public function store(Request $request)
     {
-        // $user = new User($request->all());
+        // $user = new User($request->all()); -> nama variabel sama dg database dan tdk ada perubahan
+        //store : menyimpan data
 
-        $user = new User();
+        $user = new User(); // nama atribut ada yg tidak sama/ harrus di encode duluu'
         $user->name = $request->input('name');
         $user->username = $request->input('username');
-        $user->password = $request->input('password');
+        $user->password = bcrypt($request->input('password'));
         $user->phone_number = $request->input('phone_number');
         $user->type = $request->input('type');
         $user->save();
@@ -48,7 +51,8 @@ class ResourceControllerExample extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
+        //menampilkan salah satu 
+        $user = User::find($id); // hanya bisa berlaku di PK yg namanya id
         return response()->json(['code'=>'SUCCESS_GET', 'message'=>'Ok', 'content'=>$user]);
     }
 
