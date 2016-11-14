@@ -15,8 +15,9 @@ class users_controller extends Controller
 
     public function deleteUser($id)
     {
-    	$users = User::find($id);
-    	$users->delete();
+    	//$users = User::find($id);
+    	//$users->delete(); cara panjang
+        User::destroy($id);
 
     	return response()->json(['code'=>'SUCCESS_DELETE','message'=>'delete success', 'content' => null]);
     }
@@ -33,7 +34,7 @@ class users_controller extends Controller
     		$users -> type = $request->input('type');
 
     		$users -> save();
-    		return response () -> json(['code'=> 'SUCCESS_POST', 'message' => 'resgister success', 'content' =>  null]);
+    		return response () -> json(['code'=> 'SUCCESS_POST', 'message' => 'register success', 'content' =>  null]);
     		//post untuk mengirimkan data 
     		//put untuk mengupdate/edit data
 
@@ -43,4 +44,24 @@ class users_controller extends Controller
     		return response() -> json(['code' => 'FAILURE_POST', 'message' => 'username already exist', 'content' => null]);
     	}
     }
+    public function editUser(Request $request, $id)
+    {
+        $users = User::find($id);
+        $users -> username = $request->input('username');
+        $users -> password = bcrypt($request->input('password'));
+        $users -> name = $request->input('name');
+        $users -> phone_number = $request->input('phone_number');
+        $users -> type = $request->input('type');
+
+        $users -> save();
+        return response () -> json(['code'=> 'SUCCESS_PUT', 'message' => 'edit success', 'content' =>  null]);
+
+    }
+    public function detailUser($id)
+    {
+        $users = User::find($id);
+        return response()->json([
+            'code'=>'SUCCESS_GET','message'=>'detail success', 'content'=>$users]);
+    }
+
 }

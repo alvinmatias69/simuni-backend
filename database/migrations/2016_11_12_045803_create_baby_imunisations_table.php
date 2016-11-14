@@ -17,10 +17,11 @@ class CreateBabyImunisationsTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->integer('idBaby')->unsigned();
-            $table->foreign('idBaby')->references('id')->on('babys');
+            $table->foreign('idBaby')->references('id')->on('users');
             $table->integer('idVaccine')->unsigned();
             $table->foreign('idVaccine')->references('id')->on('vaccines');
             $table->date('immusation_date');
+            $table->softDeletes(); 
         });
     }
 

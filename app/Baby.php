@@ -3,13 +3,20 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Baby extends Model
 {
 
 	//ini harus dicopas dulu method dibawah2 dari user ?? gak keluar dia langsung
-    protected $table = 'babys';
+    use SoftDeletes;
 
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['deleted_at'];
     //ini harus dicopas dulu method dibawah2 dari user ?? gak keluar dia langsung
 	protected $primaryKey = null;
 	public $incrementing = false;
