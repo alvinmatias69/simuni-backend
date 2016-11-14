@@ -15,7 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::get('/users','users_controller@getAllUser');
 
-//Route::delete('/users','users_controller@deleteUser');
-//Route::post('/users','users_controller@registerUser');
+
+Route::group(['prefix'=>'api'], function(){
+	Route::get('/schedule','ControllerGetAllJadwal@getJadwalbyDate');
+	Route::get('/schedule/{id}','ControllerGetAllJadwal@getJadwalbyUser');
+	Route::post('/schedule','ControllerGetAllJadwal@createNewJadwal');
+
+	Route::get('/users','users_controller@getAllUser');
+
+	Route::delete('/users','users_controller@deleteUser');
+	Route::post('/users','users_controller@registerUser');
+});
