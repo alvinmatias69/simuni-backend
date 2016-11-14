@@ -4,10 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-
 class Baby extends Model
 {
-	//ini harus dicopas dulu method dibawah2 dari user ?? gak keluar dia langsung
+    //ini harus dicopas dulu method dibawah2 dari user ?? gak keluar dia langsung
 	protected $primaryKey = null;
 	public $incrementing = false;
      /*protected $table = 'babies'; ; kalo nama tabel beda dg model
@@ -17,11 +16,16 @@ class Baby extends Model
     */
     protected $fillable = // kolom2 yg diisi manual datanya, public, constractor
     [
-        'birth_date', 'father_name', 'mother_name', 'weight', 'height'
+        'idUser','birth_date', 'father_name', 'mother_name', 'weight', 'height'
     ];
 
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'idUser');
     }
 }

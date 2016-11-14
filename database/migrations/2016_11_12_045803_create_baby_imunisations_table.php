@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBabyImmunitationsTable extends Migration
+class CreateBabyImunisationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreateBabyImmunitationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('baby_immunitations', function (Blueprint $table) {
+        Schema::create('baby_imunisations', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->integer('idBaby')->unsigned();
             $table->foreign('idBaby')->references('id')->on('babys');
             $table->integer('idVaccine')->unsigned();
             $table->foreign('idVaccine')->references('id')->on('vaccines');
-            $table->date('immutation_date');
-
+            $table->date('immusation_date');
         });
     }
 
@@ -32,6 +31,6 @@ class CreateBabyImmunitationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('baby_immunitations');
+        Schema::dropIfExists('baby_imunisations');
     }
 }

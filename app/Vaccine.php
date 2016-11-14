@@ -22,5 +22,13 @@ class Vaccine extends Model
      * @var array
      */
 
-}
+    public function baby_imunisation()
+    {
+        return $this->hasMany('App\Baby_Immunisation','idVaccine');
 
+    }
+
+    /* bla bla bla bla bla */
+
+
+}
