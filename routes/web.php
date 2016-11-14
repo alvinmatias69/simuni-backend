@@ -13,6 +13,7 @@
 
 Route::get('/', function () {
     return view('welcome');
+
 });
 
 
@@ -23,7 +24,9 @@ Route::group(['prefix'=>'api'], function(){
 	Route::post('/schedule','ControllerGetAllJadwal@createNewJadwal');
 
 	Route::get('/users','users_controller@getAllUser');
-
 	Route::delete('/users','users_controller@deleteUser');
 	Route::post('/users','users_controller@registerUser');
+	
+	Route::get('/findAllBaby','bayi_controller@getAllBaby');
+	Route::get('/findBaby/{id}','bayi_controller@getBaby');
 });
