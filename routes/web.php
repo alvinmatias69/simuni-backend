@@ -46,4 +46,14 @@ Route::group(['prefix'=>'api','middleware'=>'cors'], function(){
 	//route controller bayi
 	Route::get('/bayi','bayi_controller@getAllBaby');
 	Route::get('/bayi/{id}','bayi_controller@showBaby');
+
+
+	//Vaksin Route /Yogie
+
+	Route::get('/vaksin','ControllerVaccines@index');
+	Route::get('/vaksin/{id}','ControllerVaccines@show');
+	Route::put('/vaksin/{id}','ControllerVaccines@update');
+	Route::delete('/vaksin/{id}','ControllerVaccines@destroy');
+	Route::post('/vaksin','ControllerVaccines@store');
+
 });
