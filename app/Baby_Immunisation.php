@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 class Baby_Immunisation extends Model
 {
     /**
@@ -11,6 +11,16 @@ class Baby_Immunisation extends Model
      *
      * @var array
      */
+    use SoftDeletes;
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['deleted_at'];
+
+
 
     /*protected $table = 'babies'; ; kalo nama tabel beda dg model
     protected $primaryKey = 'id_baby'; kalo nama pk selain id

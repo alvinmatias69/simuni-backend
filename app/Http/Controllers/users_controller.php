@@ -15,8 +15,9 @@ class users_controller extends Controller
 
     public function deleteUser($id)
     {
-    	$users = User::find($id);
-    	$users->delete();
+    	//$users = User::find($id);
+    	//$users->delete(); cara panjang
+        $users::destroy($id);
 
     	return response()->json(['code'=>'SUCCESS_DELETE','message'=>'delete success', 'content' => null]);
     }

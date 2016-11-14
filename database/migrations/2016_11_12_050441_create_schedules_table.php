@@ -20,6 +20,7 @@ class CreateSchedulesTable extends Migration
             //$table->foreign('arr_idVaccine')->reference('id')->on('vaccines');
             $table->date('schedule_date');
             $table->string('location');
+            $table->softDeletes(); 
         });
     }
 

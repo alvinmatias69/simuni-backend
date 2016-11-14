@@ -13,8 +13,7 @@ class CreateBabysTable extends Migration
      */
     public function up()
     {
-        Schema::create('babys', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('babies', function (Blueprint $table) {
             $table->timestamps();
             $table->integer('idUser')->unsigned();
             $table->foreign('idUser')->references('id')->on('users');
@@ -23,6 +22,7 @@ class CreateBabysTable extends Migration
             $table->string('mother_name');
             $table->integer('weight');
             $table->integer('height');
+            $table->softDeletes(); 
         });
     }
 
