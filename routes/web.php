@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 
 Route::group(['prefix'=>'api','middleware'=>'cors'], function(){
+	Route::post('/login', 'AuthController@login');
+
 	Route::group(['middleware' => 'jwt.auth'], function() {
 	    
 	});
@@ -43,8 +45,9 @@ Route::group(['prefix'=>'api','middleware'=>'cors'], function(){
 	Route::put('/coba/{id}', 'ResourceControllerExample@update');
 	Route::delete('/coba/{id}', 'ResourceControllerExample@destroy');
 
-
-
+	//route controller bayi
+	Route::get('/bayi','bayi_controller@getAllBaby');
+	Route::get('/bayi/{id}','bayi_controller@showBaby');
 
 
 	//Vaksin Route /Yogie

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Baby;
+use App\User;
 
 class bayi_controller extends Controller
 {
@@ -16,12 +17,18 @@ class bayi_controller extends Controller
     }
 
     public function getAllBaby(){
+        $baby = Baby::with('user')->get();
+        //$baby = Baby::find($id)->User;
         $baby = Baby::all();
         return response()->json(['code'=> 'SUCCESS_GET','message' => 'OK','content' => $baby]);
     }
     public function getBaby($idUser){
         $baby = Baby::where($idUser)->first();
         return response()->json(['code' => 'SUCCESS_GET','message' => 'OK','content' =>$baby]);
+    }
+    public function showBaby($id){
+        $baby = Baby::with('baby')->get();
+        return response()->json(['code'=> 'SUCCESS_GET','message'=>'OK','content'=>$baby]);
     }
     public function InsertBaby(){
         $baby = new Baby();
