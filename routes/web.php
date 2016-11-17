@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 
 Route::group(['prefix'=>'api','middleware'=>'cors'], function(){
+	Route::post('/login', 'AuthController@login');
+
 	Route::group(['middleware' => 'jwt.auth'], function() {
 	    
 	});
