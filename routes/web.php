@@ -54,8 +54,10 @@ Route::group(['prefix'=>'api','middleware'=>'cors'], function(){
 
 	Route::get('/vaksin','ControllerVaccines@index');
 	Route::get('/vaksin/{id}','ControllerVaccines@show');
+	Route::get('/vaksinDetail/{id}','ControllerVaccines@detail');
 	Route::put('/vaksin/{id}','ControllerVaccines@update');
 	Route::delete('/vaksin/{id}','ControllerVaccines@destroy');
 	Route::post('/vaksin','ControllerVaccines@store');
+
 
 });
