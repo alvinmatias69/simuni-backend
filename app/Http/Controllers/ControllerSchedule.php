@@ -10,9 +10,21 @@ class ControllerSchedule extends Controller
 
 	public function getSchedule(Request $request)
     {
-        $schedule = Schedule::all();
-        $vaccine = Vaccine::all();
-        
+        $scheduleList = Schedule::all();
+        $vaccineList = Vaccine::all();
+        foreach ($scheduleList as $schedule) {
+            $idvaccine=json_decode($schedule->arr_idVaccine);
+            $i =0;
+            while ($i < count($idvaccine)){
+                $j=1;
+                while($j<strlen($vaccineList)){
+                    if($idvaccine[$i]==$vaccineList[$j]){
+                        $name=
+                        echo ;
+                    }
+                }
+            }
+        }
 
 
 
@@ -23,8 +35,9 @@ class ControllerSchedule extends Controller
 
 
 
-        // return response()->json(['code' => 'SUCCESS_GET', 'message' => 'OK', 'content' => $schedule]);
-        // return response()->json(['code' => 'SUCCESS_GET', 'message' => 'OK', 'content' => $vaccine]);
+
+        //return response()->json(['code' => 'SUCCESS_GET', 'message' => 'OK', 'content' => $schedule]);
+         //return response()->json(['code' => 'SUCCESS_GET', 'message' => 'OK', 'content' => $vaccineList]);
 
 
     }

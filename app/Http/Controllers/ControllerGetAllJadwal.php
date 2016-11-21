@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Schedule;
-use App\Vaccine;
+use App\Schedule; 
 
 class ControllerGetAllJadwal extends Controller
 {
