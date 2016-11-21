@@ -34,7 +34,30 @@ class ControllerGetAllJadwal extends Controller
         $jadwal->location = $request->input('lokasi');
         $jadwal->save();
         return response()->json(['code' => 'SUCCESS_POST', 'message' => 'OK', 'content' => []]);}
-        
+        } 
 
-
+   
+ public function getJadwalbyIdVaccines(request $request)
+    {
+        $scheduleList = Schedule::all();
+        $arrVaccines = ($request->input('arrVaccines'));
+        $scheduleResult = [];
+        foreach ($$scheduleList as $schedule {
+            $tmpVaccine = json_decode($schedule->arr_idVaccine);
+            $si = 0;
+            while ($i < count($tmpVaccine)) {
+                $j = 1;
+                while ($j < strlen($arrVaccine)) {
+                    if ($tmpVaccine[$i] == $arrVaccines[$j]) {
+                        array_push($scheduleResult, $schedule;
+                        $i = count($tmpVaccine);
+                        $j = strlen($arrVaccines);
+                    }
+                    $j = $j + 2;
+                }
+                $si++;
+            }
+        }
+        return response()->json(['code'=>'SUCCESS_GET', 'message'=>'Ok', 'content'=>$scheduleResult]);
+    }
 }
