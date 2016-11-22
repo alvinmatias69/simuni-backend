@@ -21,6 +21,7 @@ class CreateSchedulesTable extends Migration
             $table->date('schedule_date');
             $table->string('location');
             $table->softDeletes(); 
+            //$table->integer('idBidan');
         });
     }
 

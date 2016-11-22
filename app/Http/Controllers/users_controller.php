@@ -1,5 +1,4 @@
-<?php
-
+<?ph
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -54,7 +53,7 @@ class users_controller extends Controller
         $users -> type = $request->input('type');
 
         $users -> save();
-        return response () -> json(['code'=> 'SUCCESS_PUT', 'message' => 'edit success', 'content' =>  null]);
+        return response () -> json(['code'=> 'SUCCESS_PUT', 'message' => 'edit success', 'content' =>null]);
 
     }
     public function detailUser($id)
