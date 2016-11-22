@@ -1,8 +1,11 @@
 <?php
 
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Schedule;
+use App\Http\Requests;
 // contoh menggunakan table user
 
 class ResourceControllerExample extends Controller
@@ -82,5 +85,31 @@ class ResourceControllerExample extends Controller
         User::destroy($id);
         
         return response()->json(['code'=>'SUCCESS_DELETE', 'message'=>'Ok', 'content'=>null]);
+    }
+
+    // '[1, 2]'
+    // arrVaccines
+    public function cariArr(Request $request)
+    {
+        $scheduleList = Schedule::all();
+        $arrVaccines = ($request->input('arrVaccines'));
+        $scheduleResult = [];
+        foreach ($scheduleList as $schedule) {
+            $tmpVaccine = json_decode($schedule->arr_idVaccine);
+            $i = 0;
+            while ($i < count($tmpVaccine)) {
+                $j = 1;
+                while ($j < strlen($arrVaccines)) {
+                    if ($tmpVaccine[$i] ==  $arrVaccines[$j]) {
+                        array_push($scheduleResult, $schedule);
+                        $i = count($tmpVaccine);
+                        $j = strlen($arrVaccines);
+                    }
+                    $j = $j + 2;
+                }
+                $i++;
+            }
+        }
+        return response()->json(['code'=>'SUCCESS_GET', 'message'=>'Ok', 'content'=>$scheduleResult]);
     }
 }
