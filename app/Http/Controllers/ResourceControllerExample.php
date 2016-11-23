@@ -94,7 +94,7 @@ class ResourceControllerExample extends Controller
         $scheduleList = Schedule::all();
         $arrVaccines = ($request->input('arrVaccines'));
         $scheduleResult = [];
-        foreach ($scheduleList as $schedule) {
+        foreach ($scheduleList as $schedule)
             $tmpVaccine = json_decode($schedule->arr_idVaccine);
             $i = 0;
             while ($i < count($tmpVaccine)) {

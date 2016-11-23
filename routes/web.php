@@ -1,3 +1,4 @@
+
 <?php
 
 /*
@@ -24,9 +25,14 @@ Route::group(['prefix'=>'api','middleware'=>'cors'], function(){
 	Route::group(['middleware' => 'jwt.auth'], function() {
 	    
 	});
-	Route::get('/schedule','ControllerGetAllJadwal@getJadwalbyDate');
-	Route::get('/schedule/{id}','ControllerGetAllJadwal@getJadwalbyUser');
+	Route::get('/schedule/{date}','ControllerGetAllJadwal@getJadwalbyDate');
+	Route::get('/schedule/{user}','ControllerGetAllJadwal@getJadwalbyUser');
 	Route::post('/schedule','ControllerGetAllJadwal@createNewJadwal');
+	Route::put('/schedule/{id}','ControllerGetAllJadwal@updateSchedule');
+	Route::delete('/schedule/{id}','ControllerGetAllJadwal@deleteSchedule');
+	Route::get('/schedule/{id}','ControllerGetAllJadwal@detailSchedule');
+
+	Route::get('/schedules','ControllerSchedule@getSchedule');
 
 	Route::get('/users','users_controller@getAllUser');
 	Route::delete('/users/{id}','users_controller@deleteUser');
@@ -44,6 +50,7 @@ Route::group(['prefix'=>'api','middleware'=>'cors'], function(){
 	Route::get('/coba/{id}', 'ResourceControllerExample@show');
 	Route::put('/coba/{id}', 'ResourceControllerExample@update');
 	Route::delete('/coba/{id}', 'ResourceControllerExample@destroy');
+
 
 	//route controller bayi
 	Route::get('/bayi','bayi_controller@getAllBaby');

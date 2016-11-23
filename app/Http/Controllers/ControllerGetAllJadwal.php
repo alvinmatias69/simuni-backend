@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Schedule;
+use App\Schedule; 
 
 class ControllerGetAllJadwal extends Controller
 {
@@ -33,8 +33,31 @@ class ControllerGetAllJadwal extends Controller
         $jadwal->schedule_date = $request->input('sceduledate');
         $jadwal->location = $request->input('lokasi');
         $jadwal->save();
-        return response()->json(['code' => 'SUCCESS_POST', 'message' => 'OK', 'content' => []]);}
+        return response()->json(['code' => 'SUCCESS_POST', 'message' => 'OK', 'content' => null]);
+    }
+
+    public function updateSchedule (Request $request, $id)
+    {
+        $jadwal = Schedule::find($id);
+        //$arr_idVaccine = Vaccine::where('id',$request->only('idvaccine'))->get();
+        //$jadwal->json_decode($arr_idVaccine);     
+        $jadwal->schedule_date = $request->input('sceduledate');
+        $jadwal->location = $request->input('lokasi');
+        $jadwal->save();
+        return response()->json(['code' => 'SUCCESS_PUT', 'message' => 'OK', 'content' => null]);
+    }
+
+    public function deleteSchedule ($id)
+    {
+        Schedule::destroy($id);
+        return response()->json(['code'=>'SUCCESS_DELETE', 'message'=>'OK', 'content'=>null]);
+    }
         
+    public function detailSchedule ($id)
+    {
+        $jadwal=Schedule::find($id);
+        return response()->json(['code'=>'SUCCES_GET', 'message'=>'OK', 'content'=>$jadwal]);
+    }
 
 
 }
