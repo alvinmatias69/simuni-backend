@@ -8,23 +8,29 @@ use App\Vaccine;
 class ControllerSchedule extends Controller
 {
 
-	public function getSchedule(Request $request)
+	public function getSchedule()
     {
         $scheduleList = Schedule::all();
+
         $vaccineList = Vaccine::all();
+        $scheduleResult = [];
         foreach ($scheduleList as $schedule) {
             $idvaccine=json_decode($schedule->arr_idVaccine);
-            $i =0;
-            while ($i < count($idvaccine)){
-                $j=1;
-                while($j<strlen($vaccineList)){
-                    if($idvaccine[$i]==$vaccineList[$j]){
-                        $name=
-                        echo ;
+            $dataVaccine = [];
+            for ($i=0; $i< count($idvaccine) ; $i++) { 
+                for ($j=0; $j < count($vaccineList); $j++) { 
+                    if($idvaccine[$i]==$vaccineList[$j]->id){
+                        array_push($dataVaccine, $vaccineList[$j]);
+                            // $i = count($idvaccine);
+                            // $j = strlen($vaccineList);
                     }
                 }
             }
+            $schedule->vaccines = $dataVaccine;
         }
+        return response()->json(['code'=>'SUCCESS_GET','message'=>'OK', 'conten'=>$scheduleList]);
+
+        
 
 
 
@@ -36,8 +42,7 @@ class ControllerSchedule extends Controller
 
 
 
-        //return response()->json(['code' => 'SUCCESS_GET', 'message' => 'OK', 'content' => $schedule]);
-         //return response()->json(['code' => 'SUCCESS_GET', 'message' => 'OK', 'content' => $vaccineList]);
+         // return response()->json(['code' => 'SUCCESS_GET', 'message' => 'OK', 'content' => $vaccineList]);
 
 
     }
