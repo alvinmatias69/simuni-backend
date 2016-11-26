@@ -16,10 +16,9 @@ class Baby extends Model
      *
      * @var array
      */
-    protected $dates = ['deleted_at'];
     //ini harus dicopas dulu method dibawah2 dari user ?? gak keluar dia langsung
-	protected $primaryKey = null;
-	public $incrementing = false;
+    protected $primaryKey = null;
+    public $incrementing = false;
      /*protected $table = 'babies'; ; kalo nama tabel beda dg model
     protected $primaryKey = 'id_baby'; kalo nama pk selain id
     public $incrementing = false;* kalo increment tidak aktif
@@ -27,9 +26,10 @@ class Baby extends Model
     */
     protected $fillable = // kolom2 yg diisi manual datanya, public, constractor
     [
-        'idUser','birth_date', 'father_name', 'mother_name', 'weight', 'height'
+        'idUser','birth_date', 'father_name', 'mother_name', 'weight', 'height', 'deleted_at'
     ];
 
+    protected $dates = ['deleted_at'];
     /**
      * The attributes that should be hidden for arrays.
      *

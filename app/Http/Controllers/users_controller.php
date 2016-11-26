@@ -1,4 +1,4 @@
-<?ph
+<?php
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -56,11 +56,29 @@ class users_controller extends Controller
         return response () -> json(['code'=> 'SUCCESS_PUT', 'message' => 'edit success', 'content' =>null]);
 
     }
+
     public function detailUser($id)
     {
         $users = User::find($id);
         return response()->json([
             'code'=>'SUCCESS_GET','message'=>'detail success', 'content'=>$users]);
+    }
+
+    public function getAllBidan()
+    {
+        $bidan = User::where('type', 'bidan')->get();
+        return response()->json([
+            'code'=>'SUCCESS_GET','message'=>'detail success', 'content'=>$bidan]);
+    }
+
+    public function uploadAvatar(Request $request, $id)
+    {
+        $namaFile = $id . '.' . $request->file('image')->guessExtension();
+        $request->file('image')->move(public_path('/avatar/'), $namaFile);
+        $user = User::find($id);
+        $user->urlFoto = $namaFile;
+        $user->save();
+        return response()->json(['code'=>'SUCCESS_POST', 'message'=>'OK', 'content'=>['urlFoto'=>$user->urlFoto]]);
     }
 
 }
