@@ -22,6 +22,9 @@ Route::get('/', function () {
 Route::group(['prefix'=>'api','middleware'=>'cors'], function(){
 	Route::post('/login', 'AuthController@login');
 
+	Route::put('/bayiUpdate/{id}', 'bayi_controller@update');
+	Route::post('/avatar/{id}', 'users_controller@uploadAvatar');
+
 	Route::group(['middleware' => 'jwt.auth'], function() {
 	    
 	});
@@ -33,6 +36,10 @@ Route::group(['prefix'=>'api','middleware'=>'cors'], function(){
 	Route::get('/schedule/{id}','ControllerGetAllJadwal@detailSchedule');
 
 	Route::get('/schedules','ControllerSchedule@getSchedule');
+	Route::get('/schedules/{id}', 'ControllerSchedule@getScheduleByBidan');
+	Route::get('/schedulesNotDone/{id}', 'ControllerSchedule@getScheduleNotDone');
+	Route::get('/schedulesDone/{id}', 'ControllerSchedule@getScheduleDone');
+	Route::put('/schedulesBatch', 'ControllerSchedule@updateBabySchedule');
 
 	Route::get('/users','users_controller@getAllUser');
 	Route::delete('/users/{id}','users_controller@deleteUser');
@@ -42,7 +49,7 @@ Route::group(['prefix'=>'api','middleware'=>'cors'], function(){
 	
 	Route::get('/findAllBaby','bayi_controller@getAllBaby');
 	Route::get('/findBaby/{id}','bayi_controller@getBaby');
-
+	Route::delete('/babyDelete/{id}', 'bayi_controller@DeleteBaby');
 
 	// contoh routes, delete ketika stagging
 	Route::get('/coba','ResourceControllerExample@index');
@@ -55,6 +62,7 @@ Route::group(['prefix'=>'api','middleware'=>'cors'], function(){
 	//route controller bayi
 	Route::get('/bayi','bayi_controller@getAllBaby');
 	Route::get('/bayi/{id}','bayi_controller@showBaby');
+	Route::post('/bayi', 'bayi_controller@insertBaby');
 
 
 	//Vaksin Route /Yogie
@@ -64,5 +72,8 @@ Route::group(['prefix'=>'api','middleware'=>'cors'], function(){
 	Route::put('/vaksin/{id}','ControllerVaccines@update');
 	Route::delete('/vaksin/{id}','ControllerVaccines@destroy');
 	Route::post('/vaksin','ControllerVaccines@store');
+
+	// bidan Route
+	Route::get('/bidan', 'users_controller@getAllBidan');
 
 });

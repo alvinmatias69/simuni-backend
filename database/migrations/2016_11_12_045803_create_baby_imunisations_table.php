@@ -13,14 +13,14 @@ class CreateBabyImunisationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('baby_imunisations', function (Blueprint $table) {
+        Schema::create('baby_immunisations', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->integer('idBaby')->unsigned();
             $table->foreign('idBaby')->references('id')->on('users');
             $table->integer('idVaccine')->unsigned();
             $table->foreign('idVaccine')->references('id')->on('vaccines');
-            $table->date('immusation_date');
+            $table->date('immunisation_date')->default(null);
             $table->softDeletes(); 
         });
     }
@@ -32,6 +32,6 @@ class CreateBabyImunisationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('baby_imunisations');
+        Schema::dropIfExists('baby_immunisations');
     }
 }

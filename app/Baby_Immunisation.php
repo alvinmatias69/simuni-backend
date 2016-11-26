@@ -21,7 +21,7 @@ class Baby_Immunisation extends Model
     protected $dates = ['deleted_at'];
 
 
-
+    protected $table = 'baby_immunisations';
     /*protected $table = 'babies'; ; kalo nama tabel beda dg model
     protected $primaryKey = 'id_baby'; kalo nama pk selain id
     public $incrementing = false;* kalo increment tidak aktif
@@ -29,7 +29,7 @@ class Baby_Immunisation extends Model
     */
     protected $fillable = // kolom2 yg diisi manual datanya, public, constractor
     [
-        'idBaby','idVaccine','immutation_date'
+        'idBaby','idVaccine','immunisation_date', 'idSchedule'
     ];
 
     public function user()

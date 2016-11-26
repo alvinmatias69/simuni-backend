@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddIdBidanSchedulesTabel extends Migration
+class UsersAddUrlFoto extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class AddIdBidanSchedulesTabel extends Migration
      */
     public function up()
     {
-        Schema::table('schedules', function (Blueprint $table) {
-            $table->integer('idBidan')->unsigned();
-            $table->foreign('idBidan')->references('id')->on('users');
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('urlFoto')->default('default.jpg');
         });
     }
 
@@ -26,8 +25,8 @@ class AddIdBidanSchedulesTabel extends Migration
      */
     public function down()
     {
-        Schema::table('schedules', function (Blueprint $table) {
-            $table->dropColumn('idBidan');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('urlFoto');
         });
     }
 }

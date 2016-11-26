@@ -30,8 +30,9 @@ class ControllerGetAllJadwal extends Controller
     {
         $jadwal = new Schedule();
         $jadwal->arr_idVaccine = $request->input('idvaccine'); 
-        $jadwal->schedule_date = $request->input('sceduledate');
+        $jadwal->schedule_date = $request->input('scheduledate');
         $jadwal->location = $request->input('lokasi');
+        $jadwal->idBidan = $request->input('idBidan');
         $jadwal->save();
         return response()->json(['code' => 'SUCCESS_POST', 'message' => 'OK', 'content' => null]);
     }
@@ -41,8 +42,9 @@ class ControllerGetAllJadwal extends Controller
         $jadwal = Schedule::find($id);
         //$arr_idVaccine = Vaccine::where('id',$request->only('idvaccine'))->get();
         //$jadwal->json_decode($arr_idVaccine);     
-        $jadwal->schedule_date = $request->input('sceduledate');
-        $jadwal->location = $request->input('lokasi');
+        $jadwal->arr_idVaccine = $request->input('arrVaccine');
+        $jadwal->schedule_date = $request->input('schedule_date');
+        $jadwal->location = $request->input('location');
         $jadwal->save();
         return response()->json(['code' => 'SUCCESS_PUT', 'message' => 'OK', 'content' => null]);
     }

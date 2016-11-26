@@ -25,9 +25,11 @@ class AuthController extends Controller
             // return $this->jsonResponse('FAILED_POST', 'SERVER_ERROR', ['error' => $e]);
         }
         $tmp = User::where('username', $request->only('username'))->first();
+        $name = $tmp->name;
         $type = $tmp->type;
         $id = $tmp->id;
-        return response()->json(['status'=>'SUCCESS_POST','message'=>'Ok','content'=>['apiKey' => $token, 'type' => $type, 'id' => $id]]);
+        $urlFoto = $tmp->urlFoto;
+        return response()->json(['status'=>'SUCCESS_POST','message'=>'Ok','content'=>['token' => $token, 'type' => $type, 'id' => $id, 'name' => $name, 'urlFoto' => $urlFoto]]);
         // return $this->jsonResponse('SUCCESS_POST', 'OK', ['apiKey' => $token, 'type' => $type, 'id' => $id]);
     }
 }
